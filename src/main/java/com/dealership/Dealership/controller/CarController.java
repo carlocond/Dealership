@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @RestController
-@RequestMapping("/api/v1/cars")
+@RequestMapping("/api/cars")
 @RequiredArgsConstructor
 public class CarController {
 
@@ -22,38 +22,38 @@ public class CarController {
 
     @PostMapping
     public ResponseEntity<Car> uploadCar(@RequestBody Car car){
-        log.info("POST /api/v1/cars chiamato con body name {}" + car.getModel());
+        log.info("POST /api/cars chiamato con body name {}" + car.getModel());
         Car createdCar = carService.uploadCar(car);
         return ResponseEntity.ok(createdCar);
     }
 
     @GetMapping
     public ResponseEntity<List<Car>> findAllCars(){
-        log.info("GET /api/v1/cars chiamato per una lista");
+        log.info("GET /api/cars chiamato per una lista");
         return ResponseEntity.ok(carService.findAllCars());
     }
 
     @GetMapping("/brand/{brand}")
     public ResponseEntity<List<Car>> findCarsByBrand(@PathVariable String brand){
-        log.info("GET /api/v1/cars/brand/{} chiamato per una lista" + brand);
+        log.info("GET /api/cars/brand/{} chiamato per una lista" + brand);
         return ResponseEntity.ok(carService.findCarsByBrand(brand));
     }
 
     @GetMapping("/year/{year}")
     public ResponseEntity<List<Car>> findCarsByYear(@PathVariable int year){
-        log.info("GET /api/v1/cars/year/{} chiamato per una lista" + year);
+        log.info("GET /api/cars/year/{} chiamato per una lista" + year);
         return ResponseEntity.ok(carService.findCarsByYear(year));
     }
 
     @GetMapping("/cc/{cc}")
     public ResponseEntity<List<Car>> findCarsByCC(@PathVariable double cc){
-        log.info("GET /api/v1/cars/cc/{} chiamato per una lista" + cc);
+        log.info("GET /api/cars/cc/{} chiamato per una lista" + cc);
         return ResponseEntity.ok(carService.findCarsByCC(cc));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Car> deleteCar(@PathVariable Long id){
-        log.info("DELETE /api/v1/cars/{} chiamato per eliminare un'auto" + id);
+        log.info("DELETE /api/cars/{} chiamato per eliminare un'auto" + id);
         carService.delete(id);
         return ResponseEntity.noContent().build();
     }
