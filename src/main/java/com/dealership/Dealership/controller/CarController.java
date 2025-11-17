@@ -46,9 +46,9 @@ public class CarController {
     }
 
     @GetMapping("/cc/{cc}")
-    public ResponseEntity<List<Car>> findCarsByCC(@PathVariable double cc){
+    public ResponseEntity<List<Car>> findCarsByCc(@PathVariable double cc){
         log.info("GET /api/cars/cc/{} chiamato per una lista" + cc);
-        return ResponseEntity.ok(carService.findCarsByCC(cc));
+        return ResponseEntity.ok(carService.findCarsByCc(cc));
     }
 
     @DeleteMapping("/{id}")

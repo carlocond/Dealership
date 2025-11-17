@@ -41,7 +41,7 @@ public class SecurityConfig {
                                 "/", "/index.html", "/admin.html",
                                 "/favicon.ico",
                                 "/css/**", "/js/**", "/images/**",
-                                "/api/v1/auth/**"
+                                "/api/auth/**"
                         ).permitAll()
                         // Permettiamo le GET pubbliche per le entità che vogliamo rendere leggibili senza login
                         // Aggiungiamo sia il path base che i sotto-percorsi per evitare mismatch nelle route

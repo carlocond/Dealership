@@ -10,7 +10,7 @@ public interface CarRepo extends JpaRepository<Car, Long> {
 
     List<Car> findByBrand(String brand);
     List<Car> findByYear(int year);
-    List<Car> findByCC(double cc);
+    List<Car> findByCc(double cc);
     List<Car> findAll();
 
 }
