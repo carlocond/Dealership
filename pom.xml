@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>25</java.version>
         <kotlin.version>2.2.0</kotlin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 	<dependencies>
 		<dependency>
@@ -92,7 +93,14 @@
         </dependency>
     </dependencies>
 
-	<build>
+    <build>
+        <!-- Disabilitato il filtering delle risorse per evitare problemi di encoding sul sistema locale -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+        </resources>
 		<plugins>
             <plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -166,7 +174,15 @@
                     </annotationProcessorPaths>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
         </plugins>
-	</build>
+    </build>
 
 </project>
