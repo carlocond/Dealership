@@ -34,23 +34,19 @@ public class SecurityConfig {
                 // Configurazione CORS: permettiamo chiamate dal nostro front-end
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        // Permettiamo le preflight OPTIONS per CORS(CORS sono delle richieste automatiche fatte dal browser prima di una richiesta effettiva)
-                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Risorse pubbliche statiche e pagine
                         .requestMatchers(
-                                "/", "/index.html", "/admin.html",
+                                "/",
+                                "/index.html",
                                 "/favicon.ico",
-                                "/css/**", "/js/**", "/images/**",
+                                "/css/**",
+                                "/js/**",
                                 "/api/auth/**"
                         ).permitAll()
-                        // Permettiamo le GET pubbliche per le entità che vogliamo rendere leggibili senza login
-                        // Aggiungiamo sia il path base che i sotto-percorsi per evitare mismatch nelle route
-                        .requestMatchers(HttpMethod.GET, "/api/cars", "/api/cars/**").permitAll()// endpoint di debug
-
-                        // rotte admin
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
-                        // il resto richiede autenticazione
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api**")
+                        .authenticated()
+                        .anyRequest()
+                        .permitAll()// endpoint di debug
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dealership App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header id="topbar" class="topbar hidden">
+    <div class="topbar__left">
+        <span class="topbar__logo">🚗 Dealership</span>
+    </div>
+    <div class="topbar__right">
+        <span id="topbar-user-info" class="topbar__user"></span>
+        <button id="btn-logout" class="btn btn--ghost">Logout</button>
+    </div>
+</header>
+
+<main class="main">
+
+    <!-- LOGIN / REGISTER -->
+    <section id="view-auth" class="view view--active">
+        <div class="auth-card card card--glass">
+
+            <div class="auth-card__tabs">
+                <button id="tab-login" class="auth-tab auth-tab--active">Login</button>
+                <button id="tab-register" class="auth-tab">Registrati</button>
+            </div>
+
+            <div id="auth-error" class="alert alert--error hidden"></div>
+
+            <!-- LOGIN FORM -->
+            <form id="login-form" class="form form--active">
+                <h1>Accedi</h1>
+                <label class="form__field">
+                    <span>Email</span>
+                    <input type="email" id="login-email" required>
+                </label>
+                <label class="form__field">
+                    <span>Password</span>
+                    <input type="password" id="login-password" required>
+                </label>
+                <button class="btn btn--primary btn--full">Accedi</button>
+            </form>
+
+            <!-- REGISTER FORM -->
+            <form id="register-form" class="form">
+                <h1>Registrati</h1>
+
+                <label class="form__field">
+                    <span>Nome</span>
+                    <input type="text" id="register-fname" required>
+                </label>
+                <label class="form__field">
+                    <span>Cognome</span>
+                    <input type="text" id="register-lname" required>
+                </label>
+                <label class="form__field">
+                    <span>Email</span>
+                    <input type="email" id="register-email" required>
+                </label>
+                <label class="form__field">
+                    <span>Password</span>
+                    <input type="password" id="register-password" required>
+                </label>
+
+                <button class="btn btn--primary btn--full">Crea account</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- DASHBOARD -->
+    <section id="view-dashboard" class="view">
+        <div class="dashboard-layout">
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <h2 class="sidebar__title">Menu</h2>
+
+                <button class="sidebar__link sidebar__link--active" data-target="dashboard-home">Home</button>
+                <button class="sidebar__link" data-target="dashboard-cars">Auto disponibili</button>
+
+                <!-- Solo admin -->
+                <button class="sidebar__link admin-only" data-target="admin-panel">Gestione Auto (Admin)</button>
+            </aside>
+
+            <!-- CONTENUTO PRINCIPALE -->
+            <section class="dashboard-main">
+
+                <!-- HOME -->
+                <div id="dashboard-home" class="dashboard-section dashboard-section--active">
+                    <h1 id="welcome-title">Benvenuto</h1>
+                    <p id="welcome-subtitle"></p>
+                </div>
+
+                <!-- AUTO DISPONIBILI (USER) -->
+                <div id="dashboard-cars" class="dashboard-section">
+                    <h2>Auto disponibili</h2>
+                    <input id="cars-search" placeholder="Cerca..." class="input--search">
+                    <div id="cars-grid" class="cards-grid"></div>
+                </div>
+
+                <!-- ADMIN PANEL -->
+                <div id="admin-panel" class="dashboard-section admin-only hidden">
+                    <h2>Gestione Auto (Admin)</h2>
+
+                    <!-- FORM -->
+                    <div class="card">
+                        <h3 id="admin-form-title">Aggiungi nuova auto</h3>
+
+                        <form id="admin-car-form" class="form">
+                            <input type="hidden" id="admin-car-id">
+
+                            <label class="form__field"><span>Marca</span><input id="admin-car-brand"></label>
+                            <label class="form__field"><span>Modello</span><input id="admin-car-model"></label>
+                            <label class="form__field"><span>Anno</span><input type="number" id="admin-car-year"></label>
+                            <label class="form__field"><span>Colore</span><input id="admin-car-color"></label>
+                            <label class="form__field"><span>Prezzo</span><input type="number" id="admin-car-price"></label>
+                            <label class="form__field"><span>Cilindrata</span><input type="number" id="admin-car-cc"></label>
+                            <label class="form__field"><span>HP</span><input type="number" id="admin-car-hp"></label>
+                            <label class="form__field"><span>Km</span><input type="number" id="admin-car-km"></label>
+                            <label class="form__field"><span>Immagine URL</span><input id="admin-car-image"></label>
+
+                            <button class="btn btn--primary">Salva</button>
+                            <button id="admin-cancel-edit" type="button" class="btn btn--ghost hidden">Annulla</button>
+                        </form>
+                    </div>
+
+                    <!-- TABELLA ADMIN -->
+                    <div class="card">
+                        <h3>Lista Auto</h3>
+                        <table class="admin-table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Marca</th>
+                                <th>Modello</th>
+                                <th>Anno</th>
+                                <th>Prezzo</th>
+                                <th>Azioni</th>
+                            </tr>
+                            </thead>
+                            <tbody id="admin-cars-table"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+    </section>
+
+</main>
+
+<script src="/main.js"></script>
+</body>
+</html>

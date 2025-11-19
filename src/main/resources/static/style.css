@@ -1,0 +1,210 @@
+/* ====== RESET ====== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+/* ====== TOPBAR ====== */
+.topbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(15,23,42,0.9);
+    border-bottom: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topbar.hidden { display: none; }
+.topbar__logo { font-size: 1.3rem; color: #38bdf8; }
+.topbar__user { color: #94a3b8; }
+
+/* ====== BUTTONS ====== */
+.btn {
+    padding: 8px 14px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn:hover { background: #334155; }
+.btn--primary {
+    background: #38bdf8;
+    color: black;
+    border: none;
+}
+.btn--ghost {
+    background: transparent;
+    border: 1px solid #475569;
+}
+
+/* ====== MAIN LAYOUT ====== */
+.main {
+    padding-top: 100px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ====== VIEW SWITCHING ====== */
+.view {
+    display: none;
+}
+
+.view.view--active {
+    display: block;
+}
+
+/* ====== AUTH CARDS ====== */
+.auth-card {
+    width: 350px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(30,41,59,0.8);
+    border-radius: 10px;
+    border: 1px solid #334155;
+}
+.form__field { margin-bottom: 15px; display: flex; flex-direction: column; }
+.form__field span { margin-bottom: 5px; font-size: 0.9rem; }
+input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #475569;
+    background: #1e293b;
+    color: white;
+}
+
+/* ====== AUTH FORMS ====== */
+.form {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.form.form--active {
+    display: block;
+    opacity: 1;
+}
+
+/* Tabs login/register */
+.auth-card__tabs { display: flex; margin-bottom: 20px; }
+.auth-tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: #1e293b;
+    border: 1px solid #334155;
+    cursor: pointer;
+}
+.auth-tab--active {
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+}
+
+.hidden { display: none !important; }
+
+/* ====== DASHBOARD ====== */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 220px auto;
+    gap: 20px;
+}
+
+/* ====== SIDEBAR ====== */
+.sidebar {
+    background: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #334155;
+}
+.sidebar__title { margin-bottom: 15px; font-size: 1rem; color: #94a3b8; }
+.sidebar__link {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: #e2e8f0;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.sidebar__link:hover { background: #334155; }
+.sidebar__link--active {
+    background: #38bdf8;
+    color: black;
+}
+
+/* ====== DASHBOARD CONTENT ====== */
+.dashboard-main {
+    padding: 20px;
+    background: #1e293b;
+    border-radius: 10px;
+    border: 1px solid #334155;
+}
+.dashboard-section { display: none; }
+.dashboard-section--active { display: block; }
+
+/* ====== CARDS GRID ====== */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 20px;
+}
+.car-card {
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 10px;
+}
+.car-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+.car-card h3 { margin: 10px 0 5px; }
+.car-card .badge {
+    display: inline-block;
+    padding: 3px 6px;
+    background: #334155;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+
+/* ====== ADMIN TABLE ====== */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.admin-table th, .admin-table td {
+    border-bottom: 1px solid #334155;
+    padding: 10px;
+}
+.admin-table tr:hover td {
+    background: #334155;
+}
+.btn-sm {
+    padding: 5px 8px;
+    font-size: 0.8rem;
+}
+
+.admin-only { display: none; }
+
+/* Search */
+.input--search {
+    width: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+}
